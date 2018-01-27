@@ -1,12 +1,31 @@
 package com.thoughtworks.routing.service.impl;
 
+import com.thoughtworks.routing.model.DirectedGraph;
 import com.thoughtworks.routing.model.ProblemOneInput;
 import com.thoughtworks.routing.service.Solver;
 
+import java.util.Map;
+
 public class ProblemOneSolver implements Solver<ProblemOneInput> {
 
+    private static final String NO_SUCH_ROUTE = "NO SUCH ROUTE";
+
     @Override
-    public String solve(ProblemOneInput parameters) {
-        return null;
+    public String solve(final ProblemOneInput parameters) {
+        final String[] nodes = parameters.getNodes();
+        final DirectedGraph directedGraph = parameters.getDirectedGraph();
+        Integer runningTotal = 0;
+        for (int i = 0; i < nodes.length - 1; i++) {
+            final Map<String, Integer> destLocation = directedGraph.get(nodes[i]);
+            if (destLocation == null) {
+                return NO_SUCH_ROUTE;
+            }
+            final Integer length = destLocation.get(nodes[i + 1]);
+            if (length == null) {
+                return NO_SUCH_ROUTE;
+            }
+            runningTotal += length;
+        }
+        return runningTotal.toString();
     }
 }

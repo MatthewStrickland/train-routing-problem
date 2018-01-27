@@ -1,7 +1,5 @@
 package com.thoughtworks.routing.model;
 
-import java.util.Map;
-
 /**
  * A visitor responsible for holding information corresponding to a specific problem type.
  */
@@ -22,7 +20,7 @@ public interface ProblemInput {
      * Get the directed graph to be solved against.
      * @return the directed graph
      */
-    Map<String, Map<String, Integer>> getDirectedGraph();
+    DirectedGraph getDirectedGraph();
 
     /**
      * Determine if this object is ready to be solved.

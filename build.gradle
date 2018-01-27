@@ -29,6 +29,7 @@ jacocoTestCoverageVerification {
             element = 'CLASS'
             excludes = ['com.thoughtworks.routing.RoutingSolver']
             excludes += ['com.thoughtworks.routing.reader.InputReader*']
+            excludes += ['**Builder']
             limit {
                 minimum = 1.000
             }

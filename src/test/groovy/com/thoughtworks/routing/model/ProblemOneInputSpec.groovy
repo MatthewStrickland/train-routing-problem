@@ -64,10 +64,11 @@ class ProblemOneInputSpec extends AbstractProblemOneSpec {
         !valid
 
         where:
-        input                                                                                      | _
-        ProblemOneInput.builder().build()                                                          | _
-        ProblemOneInput.builder().directedGraph(new DirectedGraph()).build()                       | _
-        ProblemOneInput.builder().directedGraph(new DirectedGraph()).nodes([] as String[]).build() | _
+        problemInput                                                                                  | _
+        ProblemOneInput.builder().build()                                                             | _
+        ProblemOneInput.builder().directedGraph(new DirectedGraph()).build()                          | _
+        ProblemOneInput.builder().directedGraph(new DirectedGraph()).nodes([] as String[]).build()    | _
+        ProblemOneInput.builder().directedGraph(new DirectedGraph()).nodes(["AB"] as String[]).build() | _
 
     }
 

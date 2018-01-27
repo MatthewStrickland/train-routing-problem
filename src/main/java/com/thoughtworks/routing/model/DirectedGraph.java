@@ -51,4 +51,13 @@ public class DirectedGraph {
         return directedGraph;
     }
 
+    /**
+     * Gets the possible node destinations for a given node.
+     * @param node the node
+     * @return the destinations for the node
+     */
+    public Map<String, Integer> get(final String node) {
+        return this.graphAttributes.get(node);
+    }
+
 }

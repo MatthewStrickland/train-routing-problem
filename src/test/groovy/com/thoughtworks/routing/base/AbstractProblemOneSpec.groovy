@@ -28,6 +28,8 @@ class AbstractProblemOneSpec extends AbstractGraphSpecification {
             CUSTOM_ROUTE_2 = "S-P-R"
     @Shared
             CUSTOM_ROUTE_3 = "S-T-Q-S-P"
+    @Shared
+            CUSTOM_ROUTE_4 = "R-T"
 
     //Invalid inputs
     @Shared

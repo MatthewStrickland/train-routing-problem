@@ -36,7 +36,8 @@ class ProblemOneSolverSpec extends AbstractProblemOneSpec {
         //Custom graph
         CUSTOM_INPUT_GRAPH  | CUSTOM_ROUTE_1 | "NO SUCH ROUTE"
         CUSTOM_INPUT_GRAPH  | CUSTOM_ROUTE_2 | "9"
-        CUSTOM_INPUT_GRAPH  | CUSTOM_ROUTE_3 | "18"
+        CUSTOM_INPUT_GRAPH  | CUSTOM_ROUTE_3 | "15"
+        CUSTOM_INPUT_GRAPH  | CUSTOM_ROUTE_4 | "NO SUCH ROUTE"
 
     }
 
