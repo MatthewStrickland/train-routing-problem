@@ -1,4 +1,4 @@
-package com.thoughtworks.routing.model
+package com.thoughtworks.routing.base
 
 import org.apache.commons.lang3.StringUtils
 import spock.lang.Shared
@@ -21,13 +21,13 @@ abstract class AbstractGraphSpecification extends Specification {
     @Shared
             EMPTY_GRAPH = StringUtils.EMPTY
     @Shared
-            INVALID_GRAPH_1 = "ABC5"
+            TOO_MANY_NODES_GRAPH = "ABC5"
     @Shared
-            INVALID_GRAPH_2 = "5"
+            SINGLE_DIGIT_GRAPH = "5"
     @Shared
-            INVALID_GRAPH_3 = "5GF"
+            WRONG_ORDER_GRAPH = "5GF"
     @Shared
-            INVALID_GRAPH_4 = "%PQ5"
+            BAD_CHARACTER_GRAPH = "%PQ5"
     @Shared
-            INVALID_GRAPH_5 = "AB5 BC4"
+            NO_DELIMITER_GRAPH = "AB5 BC4"
 }

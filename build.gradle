@@ -4,6 +4,8 @@ version '1.0-SNAPSHOT'
 apply plugin: 'groovy'
 apply plugin: 'java'
 apply plugin: "jacoco"
+apply plugin:'application'
+mainClassName = "com.thoughtworks.routing.RoutingSolver"
 
 sourceCompatibility = 1.8
 
@@ -37,10 +39,6 @@ jacocoTestCoverageVerification {
 jacocoTestCoverageVerification.dependsOn test
 jacocoTestReport.dependsOn test
 
-jar {
-    manifest {
-        attributes(
-            'Main-Class': 'com.thoughtworks.routing.RoutingSolver'
-        )
-    }
+run{
+    standardInput = System.in
 }

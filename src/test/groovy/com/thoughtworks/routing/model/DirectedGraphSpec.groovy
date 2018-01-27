@@ -1,5 +1,6 @@
 package com.thoughtworks.routing.model
 
+import com.thoughtworks.routing.base.AbstractGraphSpecification
 import spock.lang.Unroll
 /**
  * Test class for DirectedGraph.
@@ -36,13 +37,13 @@ class DirectedGraphSpec extends AbstractGraphSpecification {
         ex.message == "Unable to parse inputted graph"
 
         where:
-        simulatedInput  | _
-        EMPTY_GRAPH     | _
-        INVALID_GRAPH_1 | _
-        INVALID_GRAPH_2 | _
-        INVALID_GRAPH_3 | _
-        INVALID_GRAPH_4 | _
-        INVALID_GRAPH_5 | _
+        simulatedInput       | _
+        EMPTY_GRAPH          | _
+        TOO_MANY_NODES_GRAPH | _
+        SINGLE_DIGIT_GRAPH   | _
+        WRONG_ORDER_GRAPH    | _
+        BAD_CHARACTER_GRAPH  | _
+        NO_DELIMITER_GRAPH   | _
     }
 
 }
