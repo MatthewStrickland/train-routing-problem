@@ -20,3 +20,27 @@ dependencies {
 
     testCompile 'org.spockframework:spock-core:1.1-groovy-2.4'
 }
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            element = 'CLASS'
+            excludes = ['com.thoughtworks.routing.RoutingSolver']
+            excludes += ['com.thoughtworks.routing.reader.InputReader*']
+            limit {
+                minimum = 1.000
+            }
+        }
+    }
+}
+
+jacocoTestCoverageVerification.dependsOn test
+jacocoTestReport.dependsOn test
+
+jar {
+    manifest {
+        attributes(
+            'Main-Class': 'com.thoughtworks.routing.RoutingSolver'
+        )
+    }
+}

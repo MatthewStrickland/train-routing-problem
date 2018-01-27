@@ -1,4 +1,4 @@
-package com.thoughworks.routing.model;
+package com.thoughtworks.routing.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

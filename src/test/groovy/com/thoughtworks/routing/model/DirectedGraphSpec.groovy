@@ -1,6 +1,5 @@
 package com.thoughtworks.routing.model
 
-import com.thoughworks.routing.model.DirectedGraph
 import spock.lang.Unroll
 /**
  * Test class for DirectedGraph.
