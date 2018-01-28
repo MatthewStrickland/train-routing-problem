@@ -4,16 +4,16 @@ import com.thoughtworks.routing.enumeration.LimitType;
 import com.thoughtworks.routing.model.Connection;
 import com.thoughtworks.routing.model.Journey;
 import com.thoughtworks.routing.model.input.ProblemFourInput;
-import com.thoughtworks.routing.service.Solver;
+import com.thoughtworks.routing.service.ProblemSolver;
 import com.thoughtworks.routing.service.util.SolvingUtil;
 
 import java.util.List;
 import java.util.function.Function;
 
 /**
- * Solver implementation for problem four.
+ * ProblemSolver implementation for problem four.
  */
-public class ProblemFourSolver implements Solver<ProblemFourInput> {
+public class ProblemFourSolver implements ProblemSolver<ProblemFourInput> {
 
     /** The function to determine what the cumulative distance is. */
     private static final Function<Journey, Integer> LIMIT_FUNCTION =

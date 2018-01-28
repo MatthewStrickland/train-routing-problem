@@ -8,7 +8,7 @@ import com.thoughtworks.routing.model.input.ProblemOneInput;
 import com.thoughtworks.routing.model.input.ProblemThreeInput;
 import com.thoughtworks.routing.model.input.ProblemTwoInput;
 import com.thoughtworks.routing.service.OrchestrationService;
-import com.thoughtworks.routing.service.Solver;
+import com.thoughtworks.routing.service.ProblemSolver;
 import lombok.AllArgsConstructor;
 
 /**
@@ -17,13 +17,13 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class DefaultOrchestrator implements OrchestrationService {
 
-    /** Solver for problem one. */
+    /** ProblemSolver for problem one. */
     private ProblemOneSolver problemOneSolver;
-    /** Solver for problem two. */
+    /** ProblemSolver for problem two. */
     private ProblemTwoSolver problemTwoSolver;
-    /** Solver for problem three. */
+    /** ProblemSolver for problem three. */
     private ProblemThreeSolver problemThreeSolver;
-    /** Solver for problem four. */
+    /** ProblemSolver for problem four. */
     private ProblemFourSolver problemFourSolver;
 
     @Override
@@ -51,24 +51,24 @@ public class DefaultOrchestrator implements OrchestrationService {
     }
 
     /**
-     * Construct and pass the problemInput to the solver, first checking if it can be solved.
+     * Construct and pass the problemInput to the problemSolver, first checking if it can be solved.
      * Then write the solution to System.out, correctly formatted.
-     * @param solver the solver
+     * @param problemSolver the problemSolver
      * @param problemInput the problem input
      * @param chosenProblem the problem that was chosen
      * @param inputStringToParse the input string
      * @param <P> the type of the Problem input
      */
-    private static <P extends ProblemInput> void solveProblem(final Solver<P> solver,
+    private static <P extends ProblemInput> void solveProblem(final ProblemSolver<P> problemSolver,
                                                               final P problemInput,
                                                               final ProblemType chosenProblem,
                                                               final String inputStringToParse) {
-        if (solver.canSolve(problemInput)) {
+        if (problemSolver.canSolve(problemInput)) {
             System.out.println(
                 String.format(
                     chosenProblem.getSolutionFormat(),
                     inputStringToParse,
-                    solver.solve(problemInput)
+                    problemSolver.solve(problemInput)
                 )
             );
         }

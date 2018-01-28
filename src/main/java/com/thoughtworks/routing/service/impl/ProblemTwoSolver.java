@@ -3,16 +3,16 @@ package com.thoughtworks.routing.service.impl;
 import com.thoughtworks.routing.enumeration.LimitType;
 import com.thoughtworks.routing.model.Journey;
 import com.thoughtworks.routing.model.input.ProblemTwoInput;
-import com.thoughtworks.routing.service.Solver;
+import com.thoughtworks.routing.service.ProblemSolver;
 import com.thoughtworks.routing.service.util.SolvingUtil;
 
 import java.util.List;
 import java.util.function.Function;
 
 /**
- * Solver implementation for problem two.
+ * ProblemSolver implementation for problem two.
  */
-public class ProblemTwoSolver implements Solver<ProblemTwoInput> {
+public class ProblemTwoSolver implements ProblemSolver<ProblemTwoInput> {
 
     /** The function to determine what the cumulative trips cardinality is. */
     private static final Function<Journey, Integer> LIMIT_FUNCTION = journey -> journey.getConnections().size();

@@ -3,10 +3,10 @@ package com.thoughtworks.routing.service;
 import com.thoughtworks.routing.model.input.ProblemInput;
 
 /**
- * Solver interface which accepts a visitor. Responsible for solving an input for a given problem type.
+ * ProblemSolver interface which accepts a visitor. Responsible for solving an input for a given problem type.
  * @param <P> the type of problem this solver can solve
  */
-public interface Solver<P extends ProblemInput> {
+public interface ProblemSolver<P extends ProblemInput> {
 
     /**
      * Solve the problem based on the parameters supplied.

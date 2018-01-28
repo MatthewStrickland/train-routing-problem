@@ -2,7 +2,7 @@ package com.thoughtworks.routing.service.impl;
 
 import com.thoughtworks.routing.model.DirectedGraph;
 import com.thoughtworks.routing.model.input.ProblemThreeInput;
-import com.thoughtworks.routing.service.Solver;
+import com.thoughtworks.routing.service.ProblemSolver;
 
 import java.util.Comparator;
 import java.util.HashMap;
@@ -13,9 +13,9 @@ import java.util.Set;
 
 
 /**
- * Solver implementation for problem three.
+ * ProblemSolver implementation for problem three.
  */
-public class ProblemThreeSolver implements Solver<ProblemThreeInput> {
+public class ProblemThreeSolver implements ProblemSolver<ProblemThreeInput> {
 
     /** Return value when no route can be found. */
     private static final String NO_SUCH_ROUTE = "NO SUCH ROUTE";

@@ -2,14 +2,14 @@ package com.thoughtworks.routing.service.impl;
 
 import com.thoughtworks.routing.model.DirectedGraph;
 import com.thoughtworks.routing.model.input.ProblemOneInput;
-import com.thoughtworks.routing.service.Solver;
+import com.thoughtworks.routing.service.ProblemSolver;
 
 import java.util.Map;
 
 /**
- * Solver implementation for problem one.
+ * ProblemSolver implementation for problem one.
  */
-public class ProblemOneSolver implements Solver<ProblemOneInput> {
+public class ProblemOneSolver implements ProblemSolver<ProblemOneInput> {
 
     /** Return value when no route can be found. */
     private static final String NO_SUCH_ROUTE = "NO SUCH ROUTE";
