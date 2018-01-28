@@ -3,7 +3,6 @@ package com.thoughtworks.routing.model.input;
 import com.thoughtworks.routing.model.DirectedGraph;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
@@ -12,7 +11,6 @@ import java.util.stream.Stream;
  * DTO class to move and parse all information to the solver.
  */
 @Getter
-@Setter
 @AllArgsConstructor
 abstract class AbstractProblemInput implements ProblemInput {
 

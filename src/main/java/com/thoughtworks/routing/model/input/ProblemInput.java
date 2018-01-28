@@ -31,18 +31,6 @@ public interface ProblemInput {
     String[] getNodes();
 
     /**
-     * Sets the input.
-     * @param input the input
-     */
-    void setInput(String input);
-
-    /**
-     * Sets the directed graph.
-     * @param directedGraph the directed graph
-     */
-    void setDirectedGraph(DirectedGraph directedGraph);
-
-    /**
      * Determine if this object is ready to be solved.
      * @return true if the object is fully constructed
      */
