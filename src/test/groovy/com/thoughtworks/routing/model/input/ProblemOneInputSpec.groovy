@@ -60,8 +60,9 @@ class ProblemOneInputSpec extends AbstractProblemOneSpec {
     }
 
     @Unroll
-    def "object not valid when elements are null or empty"(ProblemOneInput problemInput) {
+    def "object not valid when elements are null or empty"(ProblemOneInput problemInput, String[] nodes) {
         given: "a constructed problem object"
+        problemInput.setNodes(nodes)
 
         when: "we attempt to validate the object"
         def valid = problemInput.isValid()
@@ -70,11 +71,11 @@ class ProblemOneInputSpec extends AbstractProblemOneSpec {
         !valid
 
         where:
-        problemInput                                                                                   | _
-        ProblemOneInput.builder().build()                                                              | _
-        ProblemOneInput.builder().directedGraph(new DirectedGraph()).build()                           | _
-        ProblemOneInput.builder().directedGraph(new DirectedGraph()).nodes([] as String[]).build()     | _
-        ProblemOneInput.builder().directedGraph(new DirectedGraph()).nodes(["AB"] as String[]).build() | _
+        problemInput                                                         | nodes
+        ProblemOneInput.builder().build()                                    | null
+        ProblemOneInput.builder().directedGraph(new DirectedGraph()).build() | null
+        ProblemOneInput.builder().directedGraph(new DirectedGraph()).build() | [] as String[]
+        ProblemOneInput.builder().directedGraph(new DirectedGraph()).build() | ["A", "AB"] as String[]
     }
 
 }

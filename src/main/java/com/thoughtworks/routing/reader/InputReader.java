@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 
 /**
  * Class to ask for, parse, and process user inputs.
@@ -61,7 +62,7 @@ public class InputReader {
     private void solveBasedOnProblemType(final DirectedGraph directedGraph) throws IOException {
         final String problemType = ask("Please input the type of problem you'd like to solve as a number, 1-4:");
 
-        final ProblemType chosenProblem = ProblemType.values()[Integer.valueOf(problemType) - 1];
+        final ProblemType chosenProblem = ProblemType.values()[Integer.parseInt(problemType) - 1];
         final String inputStringToParse = ask(chosenProblem.getRequestInput());
 
         this.orchestrator.orchestrate(directedGraph, chosenProblem, inputStringToParse);
@@ -94,7 +95,7 @@ public class InputReader {
      */
     private static String ask(final String message) throws IOException {
         System.out.println(message);
-        return new BufferedReader(new InputStreamReader(System.in)).readLine();
+        return new BufferedReader(new InputStreamReader(System.in, Charset.defaultCharset())).readLine();
     }
 
 }

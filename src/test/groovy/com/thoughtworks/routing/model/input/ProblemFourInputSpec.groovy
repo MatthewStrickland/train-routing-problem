@@ -88,8 +88,9 @@ class ProblemFourInputSpec extends AbstractProblemFourSpec {
     }
 
     @Unroll
-    def "object not valid when elements are null or empty"(ProblemFourInput problemInput) {
+    def "object not valid when elements are null or empty"(ProblemFourInput problemInput, String[] nodes) {
         given: "a constructed problem object"
+        problemInput.setNodes(nodes)
 
         when: "we attempt to validate the object"
         def valid = problemInput.isValid()
@@ -98,12 +99,12 @@ class ProblemFourInputSpec extends AbstractProblemFourSpec {
         !valid
 
         where:
-        problemInput                                                                                    | _
-        ProblemFourInput.builder().build()                                                              | _
-        ProblemFourInput.builder().directedGraph(new DirectedGraph()).build()                           | _
-        ProblemFourInput.builder().directedGraph(new DirectedGraph()).nodes([] as String[]).build()     | _
-        ProblemFourInput.builder().directedGraph(new DirectedGraph()).nodes(["AB"] as String[]).build() | _
-        ProblemFourInput.builder().directedGraph(new DirectedGraph()).nodes(["A"] as String[]).build()  | _
+        problemInput                                                          | nodes
+        ProblemFourInput.builder().build()                                    | null
+        ProblemFourInput.builder().directedGraph(new DirectedGraph()).build() | null
+        ProblemFourInput.builder().directedGraph(new DirectedGraph()).build() | [] as String[]
+        ProblemFourInput.builder().directedGraph(new DirectedGraph()).build() | ["A", "AB"] as String[]
+        ProblemFourInput.builder().directedGraph(new DirectedGraph()).build() | ["A"] as String[]
     }
 
 }

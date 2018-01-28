@@ -1,8 +1,9 @@
 package com.thoughtworks.routing.model.input;
 
 import com.thoughtworks.routing.model.DirectedGraph;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
@@ -11,7 +12,8 @@ import java.util.stream.Stream;
  * DTO class to move and parse all information to the solver.
  */
 @Getter
-@AllArgsConstructor
+@Setter
+@NoArgsConstructor
 abstract class AbstractProblemInput implements ProblemInput {
 
     /** The expected pattern of each node. */
@@ -28,7 +30,7 @@ abstract class AbstractProblemInput implements ProblemInput {
 
     @Override
     public void parseInput() {
-        setNodes(this.input);
+        parseNodes(this.input);
     }
 
     @Override
@@ -44,8 +46,8 @@ abstract class AbstractProblemInput implements ProblemInput {
      * Set the node array from a given input.
      * @param nodeInput the given input
      */
-    protected void setNodes(final String nodeInput) {
-        this.nodes = nodeInput.split(INPUT_DELIMITER);
+    void parseNodes(final String nodeInput) {
+        setNodes(nodeInput.split(INPUT_DELIMITER));
     }
 
 }

@@ -27,25 +27,20 @@ public class ProblemFourInput extends AbstractProblemInput {
      * Constructor.
      * @param input the input
      * @param directedGraph the directed graph
-     * @param nodes the nodes
-     * @param newLimitType the limit type
-     * @param newLimit the limit
      */
     @Builder
-    public ProblemFourInput(final String input, final DirectedGraph directedGraph,
-                            final String[] nodes, final LimitType newLimitType, final int newLimit) {
-        super(input, directedGraph, nodes);
-        this.limitType = newLimitType;
-        this.limit = newLimit;
+    public ProblemFourInput(final String input, final DirectedGraph directedGraph) {
+        setInput(input);
+        setDirectedGraph(directedGraph);
     }
 
     @Override
     public void parseInput() {
         final String[] inputSplit = getInput().split(ROUTE_OPERATION_DELIMITER);
-        super.setNodes(inputSplit[0]);
+        super.parseNodes(inputSplit[0]);
         final String[] operationSplit = inputSplit[1].split(OPERATION_DELIMITER);
         this.limitType = LimitType.valueOf(operationSplit[0].toUpperCase());
-        this.limit = Integer.valueOf(operationSplit[1]);
+        this.limit = Integer.parseInt(operationSplit[1]);
     }
 
     @Override

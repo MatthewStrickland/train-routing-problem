@@ -21,11 +21,11 @@ public class ProblemThreeInput extends AbstractProblemInput {
      * Constructor.
      * @param input the input
      * @param directedGraph the directed graph
-     * @param nodes the nodes
      */
     @Builder
-    public ProblemThreeInput(final String input, final DirectedGraph directedGraph, final String[] nodes) {
-        super(input, directedGraph, nodes);
+    public ProblemThreeInput(final String input, final DirectedGraph directedGraph) {
+        setInput(input);
+        setDirectedGraph(directedGraph);
     }
 
     @Override

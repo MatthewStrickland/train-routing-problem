@@ -60,8 +60,9 @@ class ProblemThreeInputSpec extends AbstractProblemThreeSpec {
     }
 
     @Unroll
-    def "object not valid when elements are null or empty"(ProblemThreeInput problemInput) {
+    def "object not valid when elements are null or empty"(ProblemThreeInput problemInput, String[] nodes) {
         given: "a constructed problem object"
+        problemInput.setNodes(nodes)
 
         when: "we attempt to validate the object"
         def valid = problemInput.isValid()
@@ -70,11 +71,11 @@ class ProblemThreeInputSpec extends AbstractProblemThreeSpec {
         !valid
 
         where:
-        problemInput                                                                                     | _
-        ProblemThreeInput.builder().build()                                                              | _
-        ProblemThreeInput.builder().directedGraph(new DirectedGraph()).build()                           | _
-        ProblemThreeInput.builder().directedGraph(new DirectedGraph()).nodes([] as String[]).build()     | _
-        ProblemThreeInput.builder().directedGraph(new DirectedGraph()).nodes(["AB"] as String[]).build() | _
+        problemInput                                                           | nodes
+        ProblemThreeInput.builder().build()                                    | null
+        ProblemThreeInput.builder().directedGraph(new DirectedGraph()).build() | null
+        ProblemThreeInput.builder().directedGraph(new DirectedGraph()).build() | [] as String[]
+        ProblemThreeInput.builder().directedGraph(new DirectedGraph()).build() | ["A", "AB"] as String[]
     }
 
 }
