@@ -1,7 +1,7 @@
 package com.thoughtworks.routing.reader;
 
 import com.thoughtworks.routing.model.DirectedGraph;
-import com.thoughtworks.routing.model.ProblemOneInput;
+import com.thoughtworks.routing.model.input.ProblemOneInput;
 import com.thoughtworks.routing.service.impl.ProblemOneSolver;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -32,11 +32,11 @@ public class InputReader {
      */
     private static void printWelcomeStatement() {
         System.out.println("Welcome to the train problem solver!");
-        System.out.println("There are 4 types of questions to ask:");
-        System.out.println("1. Route distance");
-        System.out.println("2. Number of routes between two nodes with an inclusive upper limit of stops");
-        System.out.println("3. Length of the shortest route");
-        System.out.println("4. Number of routes between two nodes with an inclusive upper limit of distance");
+        final ProblemType[] problemTypes = ProblemType.values();
+        System.out.println(String.format("There are %d types of questions to ask:", problemTypes.length));
+        for (final ProblemType problemType : problemTypes) {
+            System.out.println(problemType.getExplanation());
+        }
     }
 
     /**
@@ -100,20 +100,33 @@ public class InputReader {
     private enum ProblemType {
 
         /** Represents a problem such as "The distance of the route A-B-C". */
-        ROUTE_DISTANCE("Please input the route in the hypen delimited format of A-B-C",
+        ROUTE_DISTANCE(
+            "1. Route distance",
+            "Please input the route in the hypen delimited format of A-B-C",
             "Distance found for %s: %s"),
         /** Represents a problem such as "The number of trips starting at C and ending at C with a maximum of 3 stops". */
-        ROUTE_COUNT_STOPS("Please input the route in the format of 'C-C, maximum 3' or 'A-C, exactly 4'",
+        ROUTE_COUNT_STOPS(
+            "2. Number of routes between two nodes with an inclusive upper limit of stops",
+            "Please input the route in the format of 'C-C, maximum 3' or 'A-C, exactly 4'",
             "Number of trips found for %s: %s"),
         /** Represents a problem such as "The length of the shortest route (in terms of distance to travel) from A to C". */
-        ROUTE_SHORTEST("Please input the route in the format hypen delimited format of A-C",
+        ROUTE_SHORTEST(
+            "3. Length of the shortest route",
+            "Please input the route in the format hypen delimited format of A-C",
             "Shortest distance found for %s: %s"),
         /**
          * Represents a problem such as "The number of different routes from C to C with a distance of less than 30".
          * Note that maximum 29 is synonymous with less than 30.
          */
-        ROUTE_COUNT_DISTANCE("Please input the route in the format of 'C-C, maximum 29' or 'A-C, exactly 40'",
+        ROUTE_COUNT_DISTANCE(
+            "4. Number of routes between two nodes with an inclusive upper limit of distance",
+            "Please input the route in the format of 'C-C, maximum 29' or 'A-C, exactly 40'",
             "Routes found for %s: %s");
+
+        /**
+         * The explanation of this problem type.
+         */
+        private String explanation;
 
         /**
          * The input the user will see in the console.

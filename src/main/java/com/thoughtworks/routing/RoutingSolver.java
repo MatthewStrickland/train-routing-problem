@@ -12,11 +12,11 @@ public class RoutingSolver {
 
     /**
      * Entry point to running code.
-     * @param args any program arguements, none used
+     * @param args any program arguments, none used
      * @throws IOException when user input fails
      */
     public static void main(final String[] args) throws IOException {
-        InputReader inputReader = new InputReader();
+        final InputReader inputReader = new InputReader();
         inputReader.setProblemOneSolver(new ProblemOneSolver());
         inputReader.start();
     }

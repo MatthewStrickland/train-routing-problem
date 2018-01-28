@@ -1,4 +1,6 @@
-package com.thoughtworks.routing.model;
+package com.thoughtworks.routing.model.input;
+
+import com.thoughtworks.routing.model.DirectedGraph;
 
 /**
  * A visitor responsible for holding information corresponding to a specific problem type.

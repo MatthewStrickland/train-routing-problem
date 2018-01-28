@@ -1,6 +1,7 @@
-package com.thoughtworks.routing.model
+package com.thoughtworks.routing.model.input
 
 import com.thoughtworks.routing.base.AbstractProblemOneSpec
+import com.thoughtworks.routing.model.DirectedGraph
 import spock.lang.Unroll
 
 /**
@@ -17,7 +18,7 @@ class ProblemOneInputSpec extends AbstractProblemOneSpec {
         constructedInput.parseInput()
 
         then: "we are able to inspect the created object"
-        constructedInput.getNodes() as List == expectedNodes
+        constructedInput.nodes as List == expectedNodes
 
         where:
         input                  | expectedNodes
@@ -69,7 +70,6 @@ class ProblemOneInputSpec extends AbstractProblemOneSpec {
         ProblemOneInput.builder().directedGraph(new DirectedGraph()).build()                          | _
         ProblemOneInput.builder().directedGraph(new DirectedGraph()).nodes([] as String[]).build()    | _
         ProblemOneInput.builder().directedGraph(new DirectedGraph()).nodes(["AB"] as String[]).build() | _
-
     }
 
 }

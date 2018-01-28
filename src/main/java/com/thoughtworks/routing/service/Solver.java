@@ -1,6 +1,6 @@
 package com.thoughtworks.routing.service;
 
-import com.thoughtworks.routing.model.ProblemInput;
+import com.thoughtworks.routing.model.input.ProblemInput;
 
 /**
  * Solver interface which accepts a visitor. Responsible for solving an input for a given problem type.
