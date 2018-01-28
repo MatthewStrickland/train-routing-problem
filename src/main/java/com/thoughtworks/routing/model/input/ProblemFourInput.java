@@ -14,8 +14,6 @@ public class ProblemFourInput extends AbstractProblemInput {
     private final boolean exactly;
     /** The limit (inclusive) of distance we should aim for but not surpass. */
     private final int limit;
-    /** The set of nodes we will traverse through the map. */
-    private String[] nodes;
 
     @Builder
     public ProblemFourInput(final String input, final DirectedGraph directedGraph,

@@ -37,7 +37,6 @@ class ProblemOneInputSpec extends AbstractProblemOneSpec {
                 .input(input)
                 .directedGraph(new DirectedGraph())
                 .build()
-        constructedInput.parseInput()
 
         when: "we attempt to validate the object"
         def valid = constructedInput.parseInput()

@@ -19,9 +19,9 @@ import java.util.stream.Stream;
 public class DirectedGraph {
 
     /** The valid regex validating elemts of the string, ie. AB5. */
-    public static final Pattern VALID_GRAPH_PATTERN = Pattern.compile("[A-Za-z]{2}\\d+");
+    private static final Pattern VALID_GRAPH_PATTERN = Pattern.compile("[A-Za-z]{2}\\d+");
     /** The expected delimiter on the inputted graph string. */
-    public static final String DELIMITER = ", ";
+    private static final String DELIMITER = ", ";
 
     /** The accessible map representing the graph structure. */
     Map<String, Map<String, Integer>> graphAttributes = new HashMap<>();

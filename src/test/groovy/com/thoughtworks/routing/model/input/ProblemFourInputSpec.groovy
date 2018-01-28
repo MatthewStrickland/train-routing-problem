@@ -39,7 +39,6 @@ class ProblemFourInputSpec extends AbstractProblemFourSpec {
                 .input(input)
                 .directedGraph(new DirectedGraph())
                 .build()
-        constructedInput.parseInput()
 
         when: "we attempt to validate the object"
         def valid = constructedInput.parseInput()
@@ -49,14 +48,34 @@ class ProblemFourInputSpec extends AbstractProblemFourSpec {
 
         where:
         input                 | _
-        EMPTY_INPUT           | _
-        ONLY_ROUTE_INPUT      | _
-        SHORTHAND_INPUT       | _
         TOO_MANY_HYPENS_INPUT | _
         BAD_CHARACTER_INPUT   | _
         NO_DELIMITER_INPUT_1  | _
-        NO_DELIMITER_INPUT_2  | _
-        WRONG_ORDER_INPUT     | _
+    }
+
+    @Unroll
+    def "input string #input is not able to be parsed and throws exception #exception"(String input,
+                                                                                       Class<Exception> expectedException) {
+        given: "a valid input string added to the object, and parsed"
+        def constructedInput = ProblemFourInput.builder()
+                .input(input)
+                .directedGraph(new DirectedGraph())
+                .build()
+
+        when: "we attempt to validate the object"
+        constructedInput.parseInput()
+
+        then: "expected exception was thrown"
+        def ex = thrown(expectedException)
+        ex.class == expectedException
+
+        where:
+        input                 | expectedException
+        EMPTY_INPUT           | ArrayIndexOutOfBoundsException
+        ONLY_ROUTE_INPUT      | ArrayIndexOutOfBoundsException
+        SHORTHAND_INPUT       | IllegalArgumentException
+        NO_DELIMITER_INPUT_2  | ArrayIndexOutOfBoundsException
+        WRONG_ORDER_INPUT     | IllegalArgumentException
     }
 
     @Unroll
