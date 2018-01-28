@@ -25,7 +25,7 @@ class ProblemFourSolverSpec extends AbstractProblemFourSpec {
         def solution = classUnderTest.solve(problemInput)
 
         then: "the solution is as expected"
-        solution == expectedSolution
+        solution.startsWith(expectedSolution)
 
         where:
         graph               | inputString       | expectedSolution

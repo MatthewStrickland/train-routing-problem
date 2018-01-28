@@ -31,7 +31,6 @@ public class ProblemFourInput extends AbstractProblemInput {
         this.limit = limit;
     }
 
-
     @Override
     public void parseInput() {
         final String[] inputSplit = getInput().split(ROUTE_OPERATION_DELIMITER);

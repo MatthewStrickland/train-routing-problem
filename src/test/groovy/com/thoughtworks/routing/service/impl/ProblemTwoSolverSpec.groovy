@@ -31,14 +31,14 @@ class ProblemTwoSolverSpec extends AbstractProblemTwoSpec {
         DEFAULT_INPUT_GRAPH | QUESTION_1        | "2"
         DEFAULT_INPUT_GRAPH | QUESTION_2        | "3"
         DEFAULT_INPUT_GRAPH | CUSTOM_QUESTION_3 | "1"
-        DEFAULT_INPUT_GRAPH | CUSTOM_QUESTION_4 | "5"
-        DEFAULT_INPUT_GRAPH | CUSTOM_QUESTION_5 | "0"
+        DEFAULT_INPUT_GRAPH | CUSTOM_QUESTION_4 | "0"
+        DEFAULT_INPUT_GRAPH | CUSTOM_QUESTION_5 | "7"
         //Custom graph
         CUSTOM_INPUT_GRAPH  | CUSTOM_ROUTE_1    | "1"
         CUSTOM_INPUT_GRAPH  | CUSTOM_ROUTE_2    | "0"
         CUSTOM_INPUT_GRAPH  | CUSTOM_ROUTE_3    | "0"
         CUSTOM_INPUT_GRAPH  | CUSTOM_ROUTE_4    | "2"
-        CUSTOM_INPUT_GRAPH  | CUSTOM_ROUTE_5    | "2"
+        CUSTOM_INPUT_GRAPH  | CUSTOM_ROUTE_5    | "4"
     }
 
 }

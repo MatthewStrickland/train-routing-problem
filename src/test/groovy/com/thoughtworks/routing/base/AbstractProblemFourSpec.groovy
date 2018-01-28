@@ -14,9 +14,9 @@ class AbstractProblemFourSpec extends AbstractGraphSpecification {
     @Shared
             CUSTOM_QUESTION_2 = "A-C, exactly 9"
     @Shared
-            CUSTOM_QUESTION_3 = "B-B, maximum 18"
+            CUSTOM_QUESTION_3 = "B-B, maximum 21"
     @Shared
-            CUSTOM_QUESTION_4 = "B-B, maximum 17"
+            CUSTOM_QUESTION_4 = "B-B, maximum 18"
     @Shared
             CUSTOM_QUESTION_5 = "B-B, maximum 16"
     @Shared

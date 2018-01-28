@@ -25,6 +25,12 @@ public interface ProblemInput {
     DirectedGraph getDirectedGraph();
 
     /**
+     * Gets the array of nodes that were given in the input.
+     * @return the array of nodes
+     */
+    String[] getNodes();
+
+    /**
      * Determine if this object is ready to be solved.
      * @return true if the object is fully constructed
      */

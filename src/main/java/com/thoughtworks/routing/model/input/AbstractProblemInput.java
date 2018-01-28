@@ -41,6 +41,10 @@ abstract class AbstractProblemInput implements ProblemInput {
             Stream.of(getNodes()).allMatch(node -> VALID_PATTERN.matcher(node).matches());
     }
 
+    /**
+     * Set the node array from a given input.
+     * @param nodeInput the given input
+     */
     protected void setNodes(final String nodeInput) {
         this.nodes = nodeInput.split(INPUT_DELIMITER);
     }
