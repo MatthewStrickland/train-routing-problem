@@ -1,7 +1,7 @@
 package com.thoughtworks.routing;
 
 import com.thoughtworks.routing.reader.InputReader;
-import com.thoughtworks.routing.service.impl.ProblemOneSolver;
+import com.thoughtworks.routing.service.impl.*;
 
 import java.io.IOException;
 
@@ -16,9 +16,15 @@ public class RoutingSolver {
      * @throws IOException when user input fails
      */
     public static void main(final String[] args) throws IOException {
-        final InputReader inputReader = new InputReader();
-        inputReader.setProblemOneSolver(new ProblemOneSolver());
+        final DefaultOrchestrator orchestrator = new DefaultOrchestrator(
+            new ProblemOneSolver(),
+            new ProblemTwoSolver(),
+            new ProblemThreeSolver(),
+            new ProblemFourSolver()
+        );
+        final InputReader inputReader = new InputReader(orchestrator);
         inputReader.start();
+        System.exit(0);
     }
 
 }

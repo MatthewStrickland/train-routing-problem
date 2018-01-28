@@ -1,10 +1,10 @@
 package com.thoughtworks.routing.model;
 
+import com.google.common.collect.ImmutableList;
 import lombok.Builder;
 import lombok.Getter;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -41,7 +41,9 @@ public class Journey {
      */
     public void publish(final List<Journey> toPublish) {
         // Instantiate a new immutable list as this set of connections is now published
-        toPublish.add(this.toBuilder().connections(Collections.unmodifiableList(getConnections())).build());
+        // Use guava here as Collections library creates a view backed by the original list.
+        final List<Connection> connections = ImmutableList.copyOf(getConnections());
+        toPublish.add(this.toBuilder().connections(connections).build());
     }
 
     @Override

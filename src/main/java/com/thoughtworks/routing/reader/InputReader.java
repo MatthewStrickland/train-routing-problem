@@ -1,21 +1,22 @@
 package com.thoughtworks.routing.reader;
 
+import com.thoughtworks.routing.enumeration.ProblemType;
 import com.thoughtworks.routing.model.DirectedGraph;
-import com.thoughtworks.routing.model.input.ProblemOneInput;
-import com.thoughtworks.routing.service.impl.ProblemOneSolver;
+import com.thoughtworks.routing.service.OrchestrationService;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 /**
  * Class to ask for, parse, and process user inputs.
  */
+@AllArgsConstructor
 public class InputReader {
 
-    @Setter
-    private ProblemOneSolver problemOneSolver;
+    /** The orchestrator which pushes the inputs to a specific solver. */
+    private OrchestrationService orchestrator;
 
     /**
      * Start reading user input and converse back and forth.
@@ -45,7 +46,8 @@ public class InputReader {
      * @throws IOException when user input fails
      */
     private void getUserInput() throws IOException {
-        final String graphInputString = ConsoleAsker.ask("Please input a valid directed graph in the format of 'AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7'");
+        final String graphInputString =
+            ask("Please input a valid directed graph in the format of 'AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7'");
         final DirectedGraph directedGraph = DirectedGraph.createGraphAttributes(graphInputString);
 
         solveBasedOnProblemType(directedGraph);
@@ -57,22 +59,13 @@ public class InputReader {
      * @throws IOException when user input fails
      */
     private void solveBasedOnProblemType(final DirectedGraph directedGraph) throws IOException {
-        final String problemType = ConsoleAsker.ask("Please input the type of problem you'd like to solve as a number, 1-4:");
+        final String problemType = ask("Please input the type of problem you'd like to solve as a number, 1-4:");
 
         final ProblemType chosenProblem = ProblemType.values()[Integer.valueOf(problemType) - 1];
-        final String inputStringToParse = ConsoleAsker.ask(chosenProblem.getRequestInput());
+        final String inputStringToParse = ask(chosenProblem.getRequestInput());
 
-        if (ProblemType.ROUTE_DISTANCE == chosenProblem) {
-            final ProblemOneInput build = ProblemOneInput.builder()
-                .directedGraph(directedGraph)
-                .input(inputStringToParse)
-                .build();
-            if (this.problemOneSolver.canSolve(build)) {
-                System.out.println(String.format(chosenProblem.getSolutionFormat(),
-                    inputStringToParse,
-                    this.problemOneSolver.solve(build)));
-            }
-        }
+        this.orchestrator.orchestrate(directedGraph, chosenProblem, inputStringToParse);
+
         newGraph(directedGraph);
     }
 
@@ -82,84 +75,26 @@ public class InputReader {
      * @throws IOException when user input fails
      */
     private void newGraph(final DirectedGraph directedGraph) throws IOException {
-        final String newGraph = ConsoleAsker.ask("Would you like to use a new graph? Y/N").toLowerCase();
+        final String newGraph = ask("Would you like to use a new graph (Y/N), or exit (E)?").toLowerCase();
         if ("n".equals(newGraph)) {
             solveBasedOnProblemType(directedGraph);
         } else if ("y".equals(newGraph)) {
             getUserInput();
-        } else {
+        } else if (!"e".equals(newGraph)) {
             newGraph(directedGraph);
         }
     }
 
     /**
-     * Enum representing the type of problems available.
+     * Ask the console with a message.
+     *
+     * @param message the message
+     * @return the input
+     * @throws IOException if the input fails
      */
-    @AllArgsConstructor
-    @Getter
-    private enum ProblemType {
-
-        /** Represents a problem such as "The distance of the route A-B-C". */
-        ROUTE_DISTANCE(
-            "1. Route distance",
-            "Please input the route in the hypen delimited format of A-B-C",
-            "Distance found for %s: %s"),
-        /** Represents a problem such as "The number of trips starting at C and ending at C with a maximum of 3 stops". */
-        ROUTE_COUNT_STOPS(
-            "2. Number of routes between two nodes with an inclusive upper limit of stops",
-            "Please input the route in the format of 'C-C, maximum 3' or 'A-C, exactly 4'",
-            "Number of trips found for %s: %s"),
-        /** Represents a problem such as "The length of the shortest route (in terms of distance to travel) from A to C". */
-        ROUTE_SHORTEST(
-            "3. Length of the shortest route",
-            "Please input the route in the format hypen delimited format of A-C",
-            "Shortest distance found for %s: %s"),
-        /**
-         * Represents a problem such as "The number of different routes from C to C with a distance of less than 30".
-         * Note that maximum 29 is synonymous with less than 30.
-         */
-        ROUTE_COUNT_DISTANCE(
-            "4. Number of routes between two nodes with an inclusive upper limit of distance",
-            "Please input the route in the format of 'C-C, maximum 29' or 'A-C, exactly 40'",
-            "Routes found for %s: %s");
-
-        /**
-         * The explanation of this problem type.
-         */
-        private String explanation;
-
-        /**
-         * The input the user will see in the console.
-         */
-        private String requestInput;
-
-        /**
-         * The format of the solution to display.
-         */
-        private String solutionFormat;
-
-    }
-
-    /**
-     * Wrapper to ask the console for input.
-     */
-    private static class ConsoleAsker {
-
-        /** The reader. */
-        private static final java.io.BufferedReader READER
-            = new java.io.BufferedReader(new java.io.InputStreamReader(System.in));
-
-        /**
-         * Ask the console with a message.
-         *
-         * @param message the message
-         * @return the input
-         * @throws IOException if the input fails
-         */
-        static String ask(final String message) throws IOException {
-            System.out.println(message);
-            return READER.readLine();
-        }
+    private static String ask(final String message) throws IOException {
+        System.out.println(message);
+        return new BufferedReader(new InputStreamReader(System.in)).readLine();
     }
 
 }

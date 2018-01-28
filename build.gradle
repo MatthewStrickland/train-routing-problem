@@ -17,24 +17,27 @@ dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.3.11'
     compile 'org.apache.commons:commons-lang3:3.7'
     compile 'org.apache.logging.log4j:log4j-core:2.10.0'
+    compile 'com.google.guava:guava:16.0.1'
 
     compileOnly 'org.projectlombok:lombok:1.16.20'
 
     testCompile 'org.spockframework:spock-core:1.1-groovy-2.4'
+    testCompile 'com.github.stefanbirkner:system-rules:1.17.1'
+    testCompile 'cglib:cglib-nodep:3.2.6'
 }
 
 jacocoTestCoverageVerification {
     violationRules {
         rule {
             element = 'CLASS'
-            // Main and reader classes and lombok builders excluded as not relevant to the problem solving
+            // Main and lombok builders excluded as not relevant to the problem solving
             excludes = ['com.thoughtworks.routing.RoutingSolver']
-            excludes += ['com.thoughtworks.routing.reader.InputReader*']
             excludes += ['**Builder']
 
             // Re-included below
             excludes += ['com.thoughtworks.routing.service.util.SolvingUtil']
             excludes += ['com.thoughtworks.routing.enumeration.LimitType']
+            excludes += ['com.thoughtworks.routing.enumeration.ProblemType']
             limit {
                 minimum = 1.000
             }
@@ -53,6 +56,14 @@ jacocoTestCoverageVerification {
             includes = ['com.thoughtworks.routing.enumeration.LimitType']
             limit {
                 minimum = 0.924
+            }
+        }
+        rule {
+            element = 'CLASS'
+            // ValueOf method
+            includes = ['com.thoughtworks.routing.enumeration.ProblemType']
+            limit {
+                minimum = 0.943
             }
         }
     }
