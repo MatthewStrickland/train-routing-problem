@@ -27,13 +27,12 @@ class ProblemThreeInputSpec extends AbstractProblemThreeSpec {
         constructedInput.isValid()
 
         where:
-        input                  | expectedNodes
-        QUESTION_1             | ['A', 'C']
-        QUESTION_2             | ['B', 'B']
-        CUSTOM_QUESTION_3      | ['C', 'D',]
-        CUSTOM_QUESTION_4      | ['E', 'D']
-        CUSTOM_QUESTION_5      | ['C', 'A']
-        SINGLE_CHARACTER_INPUT | ['A']
+        input             | expectedNodes
+        QUESTION_1        | ['A', 'C']
+        QUESTION_2        | ['B', 'B']
+        CUSTOM_QUESTION_3 | ['C', 'D',]
+        CUSTOM_QUESTION_4 | ['E', 'D']
+        CUSTOM_QUESTION_5 | ['C', 'A']
     }
 
     @Unroll
@@ -51,12 +50,13 @@ class ProblemThreeInputSpec extends AbstractProblemThreeSpec {
         !valid
 
         where:
-        input                 | _
-        EMPTY_INPUT           | _
-        NO_HYPHEN_INPUT       | _
-        TOO_MANY_HYPENS_INPUT | _
-        BAD_CHARACTER_INPUT   | _
-        NO_DELIMITER_INPUT    | _
+        input                  | _
+        EMPTY_INPUT            | _
+        NO_HYPHEN_INPUT        | _
+        TOO_MANY_HYPENS_INPUT  | _
+        BAD_CHARACTER_INPUT    | _
+        NO_DELIMITER_INPUT     | _
+        SINGLE_CHARACTER_INPUT | _
     }
 
     @Unroll

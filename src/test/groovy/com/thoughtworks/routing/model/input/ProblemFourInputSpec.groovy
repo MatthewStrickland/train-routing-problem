@@ -55,10 +55,11 @@ class ProblemFourInputSpec extends AbstractProblemFourSpec {
         !valid
 
         where:
-        input                 | _
-        TOO_MANY_HYPENS_INPUT | _
-        BAD_CHARACTER_INPUT   | _
-        NO_DELIMITER_INPUT_1  | _
+        input                  | _
+        TOO_MANY_HYPENS_INPUT  | _
+        BAD_CHARACTER_INPUT    | _
+        NO_DELIMITER_INPUT_1   | _
+        SINGLE_CHARACTER_INPUT | _
     }
 
     @Unroll

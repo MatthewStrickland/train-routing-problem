@@ -19,8 +19,6 @@ class AbstractProblemThreeSpec extends AbstractGraphSpecification {
             CUSTOM_QUESTION_4 = "E-D"
     @Shared
             CUSTOM_QUESTION_5 = "C-A"
-    @Shared
-            SINGLE_CHARACTER_INPUT = "A"
 
     @Shared
             CUSTOM_ROUTE_1 = "Q-P"
@@ -34,6 +32,8 @@ class AbstractProblemThreeSpec extends AbstractGraphSpecification {
     //Invalid inputs
     @Shared
             EMPTY_INPUT = StringUtils.EMPTY
+    @Shared
+            SINGLE_CHARACTER_INPUT = "A"
     @Shared
             NO_HYPHEN_INPUT = "AD"
     @Shared

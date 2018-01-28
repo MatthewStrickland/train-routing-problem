@@ -50,5 +50,6 @@ class AbstractProblemFourSpec extends AbstractGraphSpecification {
             NO_DELIMITER_INPUT_2 = "A-B exactly 3"
     @Shared
             WRONG_ORDER_INPUT = "exactly 3, A-B"
-
+    @Shared
+            SINGLE_CHARACTER_INPUT = "S, maximum 6"
 }

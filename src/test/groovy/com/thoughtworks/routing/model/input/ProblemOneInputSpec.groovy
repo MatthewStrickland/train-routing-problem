@@ -27,13 +27,12 @@ class ProblemOneInputSpec extends AbstractProblemOneSpec {
         constructedInput.isValid()
 
         where:
-        input                  | expectedNodes
-        QUESTION_1             | ['A', 'B', 'C']
-        QUESTION_2             | ['A', 'D']
-        QUESTION_3             | ['A', 'D', 'C']
-        QUESTION_4             | ['A', 'E', 'B', 'C', 'D']
-        QUESTION_5             | ['A', 'E', 'D']
-        SINGLE_CHARACTER_INPUT | ['A']
+        input      | expectedNodes
+        QUESTION_1 | ['A', 'B', 'C']
+        QUESTION_2 | ['A', 'D']
+        QUESTION_3 | ['A', 'D', 'C']
+        QUESTION_4 | ['A', 'E', 'B', 'C', 'D']
+        QUESTION_5 | ['A', 'E', 'D']
     }
 
     @Unroll
@@ -51,12 +50,13 @@ class ProblemOneInputSpec extends AbstractProblemOneSpec {
         !valid
 
         where:
-        input                 | _
-        EMPTY_INPUT           | _
-        NO_HYPHEN_INPUT       | _
-        TOO_MANY_HYPENS_INPUT | _
-        BAD_CHARACTER_INPUT   | _
-        NO_DELIMITER_INPUT    | _
+        input                  | _
+        EMPTY_INPUT            | _
+        NO_HYPHEN_INPUT        | _
+        TOO_MANY_HYPENS_INPUT  | _
+        BAD_CHARACTER_INPUT    | _
+        NO_DELIMITER_INPUT     | _
+        SINGLE_CHARACTER_INPUT | _
     }
 
     @Unroll
