@@ -1,4 +1,4 @@
-package com.thoughtworks.routing.service.impl;
+package com.thoughtworks.routing.service.util;
 
 import com.thoughtworks.routing.model.Connection;
 import com.thoughtworks.routing.model.DirectedGraph;

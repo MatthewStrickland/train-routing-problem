@@ -1,17 +1,17 @@
 package com.thoughtworks.routing.model;
 
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 
 /**
  * Wrapper object representing the connection that will be made from a node.
  */
-@Data
 @Builder
+@Getter
 public class Connection {
 
     /** The node this connection is going to. */
-    String toNode;
+    private String toNode;
     /** The distance to the node. */
-    int distance;
+    private int distance;
 }

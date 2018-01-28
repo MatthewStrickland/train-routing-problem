@@ -27,11 +27,32 @@ jacocoTestCoverageVerification {
     violationRules {
         rule {
             element = 'CLASS'
+            // Main and reader classes and lombok builders excluded as not relevant to the problem solving
             excludes = ['com.thoughtworks.routing.RoutingSolver']
             excludes += ['com.thoughtworks.routing.reader.InputReader*']
             excludes += ['**Builder']
+
+            // Re-included below
+            excludes += ['com.thoughtworks.routing.service.util.SolvingUtil']
+            excludes += ['com.thoughtworks.routing.enumeration.LimitType']
             limit {
                 minimum = 1.000
+            }
+        }
+        rule {
+            element = 'CLASS'
+            // Private constructor cannot be tested
+            includes = ['com.thoughtworks.routing.service.util.SolvingUtil']
+            limit {
+                minimum = 0.978
+            }
+        }
+        rule {
+            element = 'CLASS'
+            // ValueOf method
+            includes = ['com.thoughtworks.routing.enumeration.LimitType']
+            limit {
+                minimum = 0.924
             }
         }
     }

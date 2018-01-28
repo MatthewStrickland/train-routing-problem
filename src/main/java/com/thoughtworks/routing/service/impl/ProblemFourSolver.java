@@ -4,6 +4,7 @@ import com.thoughtworks.routing.model.Connection;
 import com.thoughtworks.routing.model.Journey;
 import com.thoughtworks.routing.model.input.ProblemFourInput;
 import com.thoughtworks.routing.service.Solver;
+import com.thoughtworks.routing.service.util.SolvingUtil;
 
 import java.util.List;
 import java.util.function.Function;

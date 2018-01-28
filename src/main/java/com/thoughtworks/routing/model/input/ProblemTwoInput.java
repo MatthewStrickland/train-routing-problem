@@ -1,7 +1,7 @@
 package com.thoughtworks.routing.model.input;
 
+import com.thoughtworks.routing.enumeration.LimitType;
 import com.thoughtworks.routing.model.DirectedGraph;
-import com.thoughtworks.routing.model.LimitType;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;

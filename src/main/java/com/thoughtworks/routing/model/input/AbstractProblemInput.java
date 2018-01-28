@@ -3,7 +3,6 @@ package com.thoughtworks.routing.model.input;
 import com.thoughtworks.routing.model.DirectedGraph;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
@@ -13,7 +12,6 @@ import java.util.stream.Stream;
  */
 @Getter
 @AllArgsConstructor
-@NoArgsConstructor
 abstract class AbstractProblemInput implements ProblemInput {
 
     /** The expected pattern of each node. */

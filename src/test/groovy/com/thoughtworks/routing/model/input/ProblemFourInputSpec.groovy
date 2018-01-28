@@ -27,8 +27,8 @@ class ProblemFourInputSpec extends AbstractProblemFourSpec {
         input             | expectedNodes | expectedExact | expectedLimit
         QUESTION_1        | ['C', 'C']    | false         | 29
         CUSTOM_QUESTION_2 | ['A', 'C']    | true          | 9
-        CUSTOM_QUESTION_3 | ['B', 'B']    | false         | 18
-        CUSTOM_QUESTION_4 | ['B', 'B']    | false         | 17
+        CUSTOM_QUESTION_3 | ['B', 'B']    | false         | 21
+        CUSTOM_QUESTION_4 | ['B', 'B']    | false         | 18
         CUSTOM_QUESTION_5 | ['B', 'B']    | false         | 16
         CUSTOM_QUESTION_6 | ['A', 'D']    | true          | 4
     }

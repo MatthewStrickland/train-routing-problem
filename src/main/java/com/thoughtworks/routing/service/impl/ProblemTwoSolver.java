@@ -3,6 +3,7 @@ package com.thoughtworks.routing.service.impl;
 import com.thoughtworks.routing.model.Journey;
 import com.thoughtworks.routing.model.input.ProblemTwoInput;
 import com.thoughtworks.routing.service.Solver;
+import com.thoughtworks.routing.service.util.SolvingUtil;
 
 import java.util.List;
 import java.util.function.Function;
