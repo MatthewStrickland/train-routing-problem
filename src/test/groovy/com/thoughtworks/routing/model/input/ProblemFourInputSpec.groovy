@@ -25,11 +25,12 @@ class ProblemFourInputSpec extends AbstractProblemFourSpec {
 
         where:
         input             | expectedNodes | expectedExact | expectedLimit
-        QUESTION_1        | ['C', 'C']    | false         | 3
-        CUSTOM_QUESTION_2 | ['A', 'C']    | true          | 4
-        CUSTOM_QUESTION_3 | ['C', 'C']    | true          | 30
-        CUSTOM_QUESTION_4 | ['B', 'A']    | false         | 10
-        CUSTOM_QUESTION_5 | ['A', 'D']    | false         | 5
+        QUESTION_1        | ['C', 'C']    | false         | 29
+        CUSTOM_QUESTION_2 | ['A', 'C']    | true          | 9
+        CUSTOM_QUESTION_3 | ['B', 'B']    | false         | 18
+        CUSTOM_QUESTION_4 | ['B', 'B']    | false         | 17
+        CUSTOM_QUESTION_5 | ['B', 'B']    | false         | 16
+        CUSTOM_QUESTION_6 | ['A', 'D']    | true          | 4
     }
 
     @Unroll
@@ -70,12 +71,12 @@ class ProblemFourInputSpec extends AbstractProblemFourSpec {
         ex.class == expectedException
 
         where:
-        input                 | expectedException
-        EMPTY_INPUT           | ArrayIndexOutOfBoundsException
-        ONLY_ROUTE_INPUT      | ArrayIndexOutOfBoundsException
-        SHORTHAND_INPUT       | IllegalArgumentException
-        NO_DELIMITER_INPUT_2  | ArrayIndexOutOfBoundsException
-        WRONG_ORDER_INPUT     | IllegalArgumentException
+        input                | expectedException
+        EMPTY_INPUT          | ArrayIndexOutOfBoundsException
+        ONLY_ROUTE_INPUT     | ArrayIndexOutOfBoundsException
+        SHORTHAND_INPUT      | IllegalArgumentException
+        NO_DELIMITER_INPUT_2 | ArrayIndexOutOfBoundsException
+        WRONG_ORDER_INPUT    | IllegalArgumentException
     }
 
     @Unroll

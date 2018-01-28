@@ -10,8 +10,8 @@ import spock.lang.Unroll
 class ProblemTwoInputSpec extends AbstractProblemTwoSpec {
 
     @Unroll
-    def "input string #input is able to be parsed" (String input, List<String[]> expectedNodes,
-                                                    boolean expectedExact, int expectedLimit) {
+    def "input string #input is able to be parsed"(String input, List<String[]> expectedNodes,
+                                                   boolean expectedExact, int expectedLimit) {
         given: "a valid input string added to the object"
         def constructedInput = ProblemTwoInput.builder().input(input).build()
 
@@ -70,12 +70,12 @@ class ProblemTwoInputSpec extends AbstractProblemTwoSpec {
         ex.class == expectedException
 
         where:
-        input                 | expectedException
-        EMPTY_INPUT           | ArrayIndexOutOfBoundsException
-        ONLY_ROUTE_INPUT      | ArrayIndexOutOfBoundsException
-        SHORTHAND_INPUT       | IllegalArgumentException
-        NO_DELIMITER_INPUT_2  | ArrayIndexOutOfBoundsException
-        WRONG_ORDER_INPUT     | IllegalArgumentException
+        input                | expectedException
+        EMPTY_INPUT          | ArrayIndexOutOfBoundsException
+        ONLY_ROUTE_INPUT     | ArrayIndexOutOfBoundsException
+        SHORTHAND_INPUT      | IllegalArgumentException
+        NO_DELIMITER_INPUT_2 | ArrayIndexOutOfBoundsException
+        WRONG_ORDER_INPUT    | IllegalArgumentException
     }
 
     @Unroll

@@ -10,7 +10,7 @@ import spock.lang.Unroll
 class ProblemOneInputSpec extends AbstractProblemOneSpec {
 
     @Unroll
-    def "input string #input is able to be parsed" (String input, List<String[]> expectedNodes) {
+    def "input string #input is able to be parsed"(String input, List<String[]> expectedNodes) {
         given: "a valid input string added to the object"
         def constructedInput = ProblemOneInput.builder().input(input).build()
 
@@ -64,10 +64,10 @@ class ProblemOneInputSpec extends AbstractProblemOneSpec {
         !valid
 
         where:
-        problemInput                                                                                  | _
-        ProblemOneInput.builder().build()                                                             | _
-        ProblemOneInput.builder().directedGraph(new DirectedGraph()).build()                          | _
-        ProblemOneInput.builder().directedGraph(new DirectedGraph()).nodes([] as String[]).build()    | _
+        problemInput                                                                                   | _
+        ProblemOneInput.builder().build()                                                              | _
+        ProblemOneInput.builder().directedGraph(new DirectedGraph()).build()                           | _
+        ProblemOneInput.builder().directedGraph(new DirectedGraph()).nodes([] as String[]).build()     | _
         ProblemOneInput.builder().directedGraph(new DirectedGraph()).nodes(["AB"] as String[]).build() | _
     }
 

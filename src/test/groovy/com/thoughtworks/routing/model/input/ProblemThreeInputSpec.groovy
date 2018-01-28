@@ -10,7 +10,7 @@ import spock.lang.Unroll
 class ProblemThreeInputSpec extends AbstractProblemThreeSpec {
 
     @Unroll
-    def "input string #input is able to be parsed" (String input, List<String[]> expectedNodes) {
+    def "input string #input is able to be parsed"(String input, List<String[]> expectedNodes) {
         given: "a valid input string added to the object"
         def constructedInput = ProblemThreeInput.builder().input(input).build()
 
@@ -22,8 +22,8 @@ class ProblemThreeInputSpec extends AbstractProblemThreeSpec {
 
         where:
         input                  | expectedNodes
-        QUESTION_1             | ['C', 'C']
-        QUESTION_2             | ['A', 'C']
+        QUESTION_1             | ['A', 'C']
+        QUESTION_2             | ['B', 'B']
         CUSTOM_QUESTION_3      | ['C', 'D',]
         CUSTOM_QUESTION_4      | ['E', 'D']
         CUSTOM_QUESTION_5      | ['C', 'A']

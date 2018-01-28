@@ -13,7 +13,9 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class ProblemTwoInput extends AbstractProblemInput {
 
+    /** The delimiter between the route specified and the operation. */
     private static final String ROUTE_OPERATION_DELIMITER = ", ";
+    /** The delimiter between the limit type and the limit. */
     private static final String OPERATION_DELIMITER = " ";
 
     /** If this should be an exact match. */
