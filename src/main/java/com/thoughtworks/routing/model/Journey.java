@@ -16,10 +16,10 @@ import java.util.Map;
 public class Journey {
 
     /** The node at the start of the journey. */
-    String startNode;
+    private String startNode;
     /** The set of connections current traversed. */
     @Builder.Default
-    List<Connection> connections = new ArrayList<>();
+    private List<Connection> connections = new ArrayList<>();
 
     /**
      * Add a node to the set.
@@ -42,8 +42,8 @@ public class Journey {
     public void publish(final List<Journey> toPublish) {
         // Instantiate a new immutable list as this set of connections is now published
         // Use guava here as Collections library creates a view backed by the original list.
-        final List<Connection> connections = ImmutableList.copyOf(getConnections());
-        toPublish.add(this.toBuilder().connections(connections).build());
+        final List<Connection> immutableConnections = ImmutableList.copyOf(getConnections());
+        toPublish.add(this.toBuilder().connections(immutableConnections).build());
     }
 
     @Override

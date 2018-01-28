@@ -12,6 +12,12 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class ProblemOneInput extends AbstractProblemInput {
 
+    /**
+     * Constructor.
+     * @param input the input
+     * @param directedGraph the directed graph
+     * @param nodes the nodes
+     */
     @Builder
     public ProblemOneInput(final String input, final DirectedGraph directedGraph, final String[] nodes) {
         super(input, directedGraph, nodes);

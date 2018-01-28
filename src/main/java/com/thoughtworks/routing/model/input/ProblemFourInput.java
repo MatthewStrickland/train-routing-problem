@@ -23,12 +23,20 @@ public class ProblemFourInput extends AbstractProblemInput {
     /** The limit (inclusive) of distance we should aim for but not surpass. */
     private int limit;
 
+    /**
+     * Constructor.
+     * @param input the input
+     * @param directedGraph the directed graph
+     * @param nodes the nodes
+     * @param newLimitType the limit type
+     * @param newLimit the limit
+     */
     @Builder
     public ProblemFourInput(final String input, final DirectedGraph directedGraph,
-                            final String[] nodes, final LimitType limitType, final int limit) {
+                            final String[] nodes, final LimitType newLimitType, final int newLimit) {
         super(input, directedGraph, nodes);
-        this.limitType = limitType;
-        this.limit = limit;
+        this.limitType = newLimitType;
+        this.limit = newLimit;
     }
 
     @Override

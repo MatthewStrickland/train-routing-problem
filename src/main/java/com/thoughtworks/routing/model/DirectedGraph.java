@@ -24,10 +24,10 @@ public class DirectedGraph {
     private static final String DELIMITER = ", ";
 
     /** The accessible map representing the graph structure. */
-    Map<String, Map<String, Integer>> graphAttributes = new HashMap<>();
+    private final Map<String, Map<String, Integer>> graphAttributes = new HashMap<>();
 
     /**
-     * Create a DirectedGraph from a string
+     * Create a DirectedGraph from a string.
      * @param graphInputString the input string to parse
      * @return a graph wrapping a structure
      * @throws IllegalArgumentException when the string is invalid

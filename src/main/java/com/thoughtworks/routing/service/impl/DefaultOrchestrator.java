@@ -2,7 +2,11 @@ package com.thoughtworks.routing.service.impl;
 
 import com.thoughtworks.routing.enumeration.ProblemType;
 import com.thoughtworks.routing.model.DirectedGraph;
-import com.thoughtworks.routing.model.input.*;
+import com.thoughtworks.routing.model.input.ProblemFourInput;
+import com.thoughtworks.routing.model.input.ProblemInput;
+import com.thoughtworks.routing.model.input.ProblemOneInput;
+import com.thoughtworks.routing.model.input.ProblemThreeInput;
+import com.thoughtworks.routing.model.input.ProblemTwoInput;
 import com.thoughtworks.routing.service.OrchestrationService;
 import com.thoughtworks.routing.service.Solver;
 import lombok.AllArgsConstructor;

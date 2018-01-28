@@ -33,10 +33,11 @@ abstract class AbstractProblemInput implements ProblemInput {
 
     @Override
     public boolean isValid() {
-        return getDirectedGraph() != null &&
-            getNodes() != null &&
-            getNodes().length > 1 &&
-            Stream.of(getNodes()).allMatch(node -> VALID_PATTERN.matcher(node).matches());
+        return getDirectedGraph() != null
+            && getNodes() != null
+            && getNodes().length > 1
+            && Stream.of(getNodes())
+                .allMatch(node -> VALID_PATTERN.matcher(node).matches());
     }
 
     /**

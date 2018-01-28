@@ -1,14 +1,25 @@
 package com.thoughtworks.routing;
 
 import com.thoughtworks.routing.reader.InputReader;
-import com.thoughtworks.routing.service.impl.*;
+import com.thoughtworks.routing.service.impl.DefaultOrchestrator;
+import com.thoughtworks.routing.service.impl.ProblemFourSolver;
+import com.thoughtworks.routing.service.impl.ProblemOneSolver;
+import com.thoughtworks.routing.service.impl.ProblemThreeSolver;
+import com.thoughtworks.routing.service.impl.ProblemTwoSolver;
 
 import java.io.IOException;
 
 /**
  * Main class. Takes arguments from a user input and runs until terminated.
  */
-public class RoutingSolver {
+public final class RoutingSolver {
+
+    /**
+     * Private constructor to prevent instantiation.
+     */
+    private RoutingSolver() {
+        //Do nothing
+    }
 
     /**
      * Entry point to running code.

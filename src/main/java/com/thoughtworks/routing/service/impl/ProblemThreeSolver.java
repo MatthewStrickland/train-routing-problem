@@ -4,7 +4,13 @@ import com.thoughtworks.routing.model.DirectedGraph;
 import com.thoughtworks.routing.model.input.ProblemThreeInput;
 import com.thoughtworks.routing.service.Solver;
 
-import java.util.*;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+
 
 /**
  * Solver implementation for problem three.
@@ -64,7 +70,7 @@ public class ProblemThreeSolver implements Solver<ProblemThreeInput> {
             // Continue to next node if there is one available
             optionalSmallest.ifPresent(smallest -> {
                 // No need to continue if the next smallest node is our destination
-                if (!smallest.getKey().equals(destination) ) {
+                if (!smallest.getKey().equals(destination)) {
                     simpleDijikstra(directedGraph, currentShortestPaths, smallest.getKey(), visitedSet, destination);
                 }
             });
@@ -91,8 +97,8 @@ public class ProblemThreeSolver implements Solver<ProblemThreeInput> {
                 // If the to node we are currently looking at is infinity in our table, then always replace
                 // or if there is a real value then compare it
                 // and if the new route is shorter then replace it
-                if (currentInfinity ||
-                    (containsAndNotNull(currentShortestPaths, toNode) && (currentShortest > valueToCompare))) {
+                if (currentInfinity
+                    || (containsAndNotNull(currentShortestPaths, toNode) && (currentShortest > valueToCompare))) {
                     currentShortestPaths.put(toNode, valueToCompare);
                 }
             });
@@ -105,7 +111,7 @@ public class ProblemThreeSolver implements Solver<ProblemThreeInput> {
      * @param node the node
      * @return true if the map contains a real value for this node
      */
-    private static boolean containsAndNotNull(final Map<String,Integer> map, final String node) {
+    private static boolean containsAndNotNull(final Map<String, Integer> map, final String node) {
         return map.containsKey(node) && map.get(node) != null;
     }
 

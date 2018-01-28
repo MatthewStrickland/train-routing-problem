@@ -17,6 +17,12 @@ public class ProblemThreeInput extends AbstractProblemInput {
     /** The expected pattern of each node. */
     private static final Pattern VALID_PATTERN = Pattern.compile("[A-Za-z]");
 
+    /**
+     * Constructor.
+     * @param input the input
+     * @param directedGraph the directed graph
+     * @param nodes the nodes
+     */
     @Builder
     public ProblemThreeInput(final String input, final DirectedGraph directedGraph, final String[] nodes) {
         super(input, directedGraph, nodes);

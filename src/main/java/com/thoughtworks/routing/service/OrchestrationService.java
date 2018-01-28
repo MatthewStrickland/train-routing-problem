@@ -14,7 +14,7 @@ public interface OrchestrationService {
      * @param chosenProblem the problem which has been chosen
      * @param inputStringToParse the input string
      */
-    void orchestrate(final DirectedGraph directedGraph,
-                     final ProblemType chosenProblem,
-                     final String inputStringToParse);
+    void orchestrate(DirectedGraph directedGraph,
+                     ProblemType chosenProblem,
+                     String inputStringToParse);
 }

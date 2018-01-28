@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.function.Function;
 
 /**
- * Utility class
+ * Utility class.
  */
 public final class SolvingUtil {
 
@@ -84,7 +84,7 @@ public final class SolvingUtil {
                         .build(),
                     limit, limitType, limitFunction, foundRoutes);
                 // Remove the created connection from the route as we have exhausted that path
-                currentRoute.getConnections().remove(currentRoute.getConnections().size() -1);
+                currentRoute.getConnections().remove(currentRoute.getConnections().size() - 1);
             }
         }
     }
@@ -102,11 +102,10 @@ public final class SolvingUtil {
     private static void publishIfValid(final int limit, final LimitType limitType, final List<Journey> foundRoutes,
                                        final String toNode, final Journey currentRoute, final String targetNode,
                                        final Integer cumulativeLimit) {
-        final boolean publishable =
-            cumulativeLimit <= limit &&
-            (limitType == LimitType.MAXIMUM || limit == cumulativeLimit) &&
-            !currentRoute.getConnections().isEmpty() &&
-            toNode.equals(targetNode);
+        final boolean publishable = cumulativeLimit <= limit
+            && (limitType == LimitType.MAXIMUM || limit == cumulativeLimit)
+            && !currentRoute.getConnections().isEmpty()
+            && toNode.equals(targetNode);
 
         if (publishable) {
             currentRoute.publish(foundRoutes);

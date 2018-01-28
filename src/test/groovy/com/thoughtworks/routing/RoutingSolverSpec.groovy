@@ -17,8 +17,6 @@ class RoutingSolverSpec extends AbstractGraphSpecification {
     @Rule
     public TextFromStandardInputStream systemInMock = TextFromStandardInputStream.emptyStandardInputStream()
 
-    def classUnderTest = new RoutingSolver()
-
     def cleanup() {
         systemOutLog.clearLog()
     }
@@ -29,7 +27,7 @@ class RoutingSolverSpec extends AbstractGraphSpecification {
         systemInMock.provideLines([DEFAULT_INPUT_GRAPH, *mockInput, 'e'] as String[])
 
         when: "we call our main class"
-        classUnderTest.main()
+        RoutingSolver.main()
 
         then: "then the result is as expected"
         systemOutLog.getLog().readLines().get(9) == expectedOutput

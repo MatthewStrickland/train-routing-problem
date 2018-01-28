@@ -34,10 +34,19 @@ jacocoTestCoverageVerification {
             excludes = ['**Builder']
 
             // Re-included below
+            excludes += ['com.thoughtworks.routing.RoutingSolver']
             excludes += ['com.thoughtworks.routing.service.util.SolvingUtil']
             excludes += ['com.thoughtworks.routing.enumeration.ProblemType']
             limit {
                 minimum = 1.000
+            }
+        }
+        rule {
+            element = 'CLASS'
+            // Private constructor cannot be tested
+            includes = ['com.thoughtworks.routing.RoutingSolver']
+            limit {
+                minimum = 0.888
             }
         }
         rule {
