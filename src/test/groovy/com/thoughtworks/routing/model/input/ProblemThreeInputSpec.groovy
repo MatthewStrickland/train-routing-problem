@@ -12,13 +12,19 @@ class ProblemThreeInputSpec extends AbstractProblemThreeSpec {
     @Unroll
     def "input string #input is able to be parsed"(String input, List<String[]> expectedNodes) {
         given: "a valid input string added to the object"
-        def constructedInput = ProblemThreeInput.builder().input(input).build()
+        def constructedInput = ProblemThreeInput.builder()
+                .input(input)
+                .directedGraph(new DirectedGraph())
+                .build()
 
         when: "we attempt to parse the input"
         constructedInput.parseInput()
 
         then: "we are able to inspect the created object"
         constructedInput.nodes as List == expectedNodes
+
+        and: "the object is valid"
+        constructedInput.isValid()
 
         where:
         input                  | expectedNodes

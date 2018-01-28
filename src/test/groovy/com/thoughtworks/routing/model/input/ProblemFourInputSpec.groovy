@@ -13,7 +13,10 @@ class ProblemFourInputSpec extends AbstractProblemFourSpec {
     def "input string #input is able to be parsed"(String input, List<String[]> expectedNodes,
                                                    boolean expectedExact, int expectedLimit) {
         given: "a valid input string added to the object"
-        def constructedInput = ProblemFourInput.builder().input(input).build()
+        def constructedInput = ProblemFourInput.builder()
+                .directedGraph(new DirectedGraph())
+                .input(input)
+                .build()
 
         when: "we attempt to parse the input"
         constructedInput.parseInput()
@@ -22,6 +25,9 @@ class ProblemFourInputSpec extends AbstractProblemFourSpec {
         constructedInput.nodes as List == expectedNodes
         constructedInput.exactly == expectedExact
         constructedInput.limit == expectedLimit
+
+        and: "the object is valid"
+        constructedInput.isValid()
 
         where:
         input             | expectedNodes | expectedExact | expectedLimit
