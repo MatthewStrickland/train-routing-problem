@@ -1,6 +1,7 @@
 package com.thoughtworks.routing.model.input
 
 import com.thoughtworks.routing.base.AbstractProblemTwoSpec
+import com.thoughtworks.routing.enumeration.LimitType
 import com.thoughtworks.routing.model.DirectedGraph
 import spock.lang.Unroll
 
@@ -11,7 +12,7 @@ class ProblemTwoInputSpec extends AbstractProblemTwoSpec {
 
     @Unroll
     def "input string #input is able to be parsed"(String input, List<String[]> expectedNodes,
-                                                   boolean expectedExact, int expectedLimit) {
+                                                   LimitType expectedLimitType, int expectedLimit) {
         given: "a valid input string added to the object"
         def constructedInput = ProblemTwoInput.builder()
                 .directedGraph(new DirectedGraph())
@@ -23,19 +24,19 @@ class ProblemTwoInputSpec extends AbstractProblemTwoSpec {
 
         then: "we are able to inspect the created object"
         constructedInput.nodes as List == expectedNodes
-        constructedInput.exactly == expectedExact
+        constructedInput.limitType == expectedLimitType
         constructedInput.limit == expectedLimit
 
         and: "the object is valid"
         constructedInput.isValid()
 
         where:
-        input             | expectedNodes | expectedExact | expectedLimit
-        QUESTION_1        | ['C', 'C']    | false         | 3
-        QUESTION_2        | ['A', 'C']    | true          | 4
-        CUSTOM_QUESTION_3 | ['C', 'C']    | true          | 2
-        CUSTOM_QUESTION_4 | ['B', 'A']    | false         | 10
-        CUSTOM_QUESTION_5 | ['A', 'D']    | false         | 5
+        input             | expectedNodes | expectedLimitType | expectedLimit
+        QUESTION_1        | ['C', 'C']    | LimitType.MAXIMUM | 3
+        QUESTION_2        | ['A', 'C']    | LimitType.EXACTLY | 4
+        CUSTOM_QUESTION_3 | ['C', 'C']    | LimitType.EXACTLY | 2
+        CUSTOM_QUESTION_4 | ['B', 'A']    | LimitType.MAXIMUM | 10
+        CUSTOM_QUESTION_5 | ['A', 'D']    | LimitType.MAXIMUM | 5
     }
 
     @Unroll

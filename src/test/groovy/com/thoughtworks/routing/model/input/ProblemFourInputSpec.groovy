@@ -1,6 +1,7 @@
 package com.thoughtworks.routing.model.input
 
 import com.thoughtworks.routing.base.AbstractProblemFourSpec
+import com.thoughtworks.routing.enumeration.LimitType
 import com.thoughtworks.routing.model.DirectedGraph
 import spock.lang.Unroll
 
@@ -11,7 +12,7 @@ class ProblemFourInputSpec extends AbstractProblemFourSpec {
 
     @Unroll
     def "input string #input is able to be parsed"(String input, List<String[]> expectedNodes,
-                                                   boolean expectedExact, int expectedLimit) {
+                                                   LimitType expectedLimitType, int expectedLimit) {
         given: "a valid input string added to the object"
         def constructedInput = ProblemFourInput.builder()
                 .directedGraph(new DirectedGraph())
@@ -23,20 +24,20 @@ class ProblemFourInputSpec extends AbstractProblemFourSpec {
 
         then: "we are able to inspect the created object"
         constructedInput.nodes as List == expectedNodes
-        constructedInput.exactly == expectedExact
+        constructedInput.limitType == expectedLimitType
         constructedInput.limit == expectedLimit
 
         and: "the object is valid"
         constructedInput.isValid()
 
         where:
-        input             | expectedNodes | expectedExact | expectedLimit
-        QUESTION_1        | ['C', 'C']    | false         | 29
-        CUSTOM_QUESTION_2 | ['A', 'C']    | true          | 9
-        CUSTOM_QUESTION_3 | ['B', 'B']    | false         | 21
-        CUSTOM_QUESTION_4 | ['B', 'B']    | false         | 18
-        CUSTOM_QUESTION_5 | ['B', 'B']    | false         | 16
-        CUSTOM_QUESTION_6 | ['A', 'D']    | true          | 4
+        input             | expectedNodes | expectedLimitType | expectedLimit
+        QUESTION_1        | ['C', 'C']    | LimitType.MAXIMUM | 29
+        CUSTOM_QUESTION_2 | ['A', 'C']    | LimitType.EXACTLY | 9
+        CUSTOM_QUESTION_3 | ['B', 'B']    | LimitType.MAXIMUM | 21
+        CUSTOM_QUESTION_4 | ['B', 'B']    | LimitType.MAXIMUM | 18
+        CUSTOM_QUESTION_5 | ['B', 'B']    | LimitType.MAXIMUM | 16
+        CUSTOM_QUESTION_6 | ['A', 'D']    | LimitType.EXACTLY | 4
     }
 
     @Unroll

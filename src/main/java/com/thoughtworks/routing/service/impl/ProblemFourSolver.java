@@ -1,5 +1,6 @@
 package com.thoughtworks.routing.service.impl;
 
+import com.thoughtworks.routing.enumeration.LimitType;
 import com.thoughtworks.routing.model.Connection;
 import com.thoughtworks.routing.model.Journey;
 import com.thoughtworks.routing.model.input.ProblemFourInput;
@@ -21,8 +22,8 @@ public class ProblemFourSolver implements Solver<ProblemFourInput> {
     @Override
     public String solve(final ProblemFourInput parameters) {
         final int limit = parameters.getLimit();
-        final boolean exactly = parameters.isExactly();
-        final List<Journey> foundRoutes = SolvingUtil.findPossibleJourneys(parameters, limit, exactly, LIMIT_FUNCTION);
+        final LimitType limitType = parameters.getLimitType();
+        final List<Journey> foundRoutes = SolvingUtil.findPossibleJourneys(parameters, limit, limitType, LIMIT_FUNCTION);
         return String.format("%s %s", foundRoutes.size(), foundRoutes.toString());
     }
 }

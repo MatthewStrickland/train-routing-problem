@@ -35,7 +35,6 @@ jacocoTestCoverageVerification {
 
             // Re-included below
             excludes += ['com.thoughtworks.routing.service.util.SolvingUtil']
-            excludes += ['com.thoughtworks.routing.enumeration.LimitType']
             excludes += ['com.thoughtworks.routing.enumeration.ProblemType']
             limit {
                 minimum = 1.000
@@ -47,14 +46,6 @@ jacocoTestCoverageVerification {
             includes = ['com.thoughtworks.routing.service.util.SolvingUtil']
             limit {
                 minimum = 0.978
-            }
-        }
-        rule {
-            element = 'CLASS'
-            // ValueOf method
-            includes = ['com.thoughtworks.routing.enumeration.LimitType']
-            limit {
-                minimum = 0.924
             }
         }
         rule {

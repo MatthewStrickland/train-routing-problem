@@ -1,5 +1,6 @@
 package com.thoughtworks.routing.service.util;
 
+import com.thoughtworks.routing.enumeration.LimitType;
 import com.thoughtworks.routing.model.Connection;
 import com.thoughtworks.routing.model.DirectedGraph;
 import com.thoughtworks.routing.model.Journey;
@@ -28,13 +29,13 @@ public final class SolvingUtil {
      * Find the possible journeys up to the limit value (inclusive), or exactly the limit value.
      * @param parameters the parameters holding node information
      * @param limit the limit (inclusive)
-     * @param exactly true if we are to match the limit value only
+     * @param limitType the limit type
      * @param limitFunction the function to determine the cumulative value to compare with the limit
      * @return the list of journeys found
      */
     public static List<Journey> findPossibleJourneys(final ProblemInput parameters,
                                                      final int limit,
-                                                     final boolean exactly,
+                                                     final LimitType limitType,
                                                      final Function<Journey, Integer> limitFunction) {
 
         final NextDepthParameter nextDepthParameter = NextDepthParameter.builder()
@@ -44,7 +45,7 @@ public final class SolvingUtil {
             .targetNode(parameters.getNodes()[1])
             .build();
         final List<Journey> foundRoutes = new ArrayList<>();
-        traversePossibleRoutesUntilConditionMet(nextDepthParameter, limit, exactly, limitFunction, foundRoutes);
+        traversePossibleRoutesUntilConditionMet(nextDepthParameter, limit, limitType, limitFunction, foundRoutes);
         return foundRoutes;
     }
 
@@ -53,12 +54,12 @@ public final class SolvingUtil {
      * no further paths to get to (terminal node), or the limit has been reached.
      * @param nextDepthParameter the parameters holding node information
      * @param limit the limit (inclusive)
-     * @param exactly true if we are to match the limit value only
+     * @param limitType the limit type
      * @param limitFunction the function to determine the cumulative value to compare with the limit
      * @param foundRoutes the object holding the routes we have found
      */
     private static void traversePossibleRoutesUntilConditionMet(final NextDepthParameter nextDepthParameter,
-                                                                final int limit, final boolean exactly,
+                                                                final int limit, final LimitType limitType,
                                                                 final Function<Journey, Integer> limitFunction,
                                                                 final List<Journey> foundRoutes) {
         // Get the relevant parameters
@@ -70,7 +71,7 @@ public final class SolvingUtil {
 
         // Decide if publishable (add to foundRoutes - route satisfies limit constraints and end node)
         final Integer cumulativeLimit = limitFunction.apply(currentRoute);
-        publishIfValid(limit, exactly, foundRoutes, toNode, currentRoute, targetNode, cumulativeLimit);
+        publishIfValid(limit, limitType, foundRoutes, toNode, currentRoute, targetNode, cumulativeLimit);
 
         // Recursively continue if it is possible to go deeper
         if (cumulativeLimit <= limit && possibleDestinations != null) {
@@ -81,7 +82,7 @@ public final class SolvingUtil {
                     nextDepthParameter.toBuilder()
                         .startNode(currentRoute.addConnection(possibleDestination))
                         .build(),
-                    limit, exactly, limitFunction, foundRoutes);
+                    limit, limitType, limitFunction, foundRoutes);
                 // Remove the created connection from the route as we have exhausted that path
                 currentRoute.getConnections().remove(currentRoute.getConnections().size() -1);
             }
@@ -91,19 +92,19 @@ public final class SolvingUtil {
     /**
      * Determine if the current route is publisable (add to found routes).
      * @param limit the limit to check against
-     * @param exactly true if we are to match the limit value only
+     * @param limitType the limit type
      * @param foundRoutes the object holding the routes we have found
      * @param toNode the node we are currently at
      * @param currentRoute the current route we are on
      * @param targetNode the target node we terminate at
      * @param cumulativeLimit the value (distance, trips, etc) we are cumulatively at
      */
-    private static void publishIfValid(final int limit, final boolean exactly, final List<Journey> foundRoutes,
+    private static void publishIfValid(final int limit, final LimitType limitType, final List<Journey> foundRoutes,
                                        final String toNode, final Journey currentRoute, final String targetNode,
                                        final Integer cumulativeLimit) {
         final boolean publishable =
             cumulativeLimit <= limit &&
-            (!exactly || limit == cumulativeLimit) &&
+            (limitType == LimitType.MAXIMUM || limit == cumulativeLimit) &&
             !currentRoute.getConnections().isEmpty() &&
             toNode.equals(targetNode);
 

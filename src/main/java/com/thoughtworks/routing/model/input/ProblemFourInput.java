@@ -19,15 +19,15 @@ public class ProblemFourInput extends AbstractProblemInput {
     private static final String OPERATION_DELIMITER = " ";
 
     /** If this should be an exact match. */
-    private boolean exactly;
+    private LimitType limitType;
     /** The limit (inclusive) of distance we should aim for but not surpass. */
     private int limit;
 
     @Builder
     public ProblemFourInput(final String input, final DirectedGraph directedGraph,
-                           final String[] nodes, final boolean exactly, final int limit) {
+                            final String[] nodes, final LimitType limitType, final int limit) {
         super(input, directedGraph, nodes);
-        this.exactly = exactly;
+        this.limitType = limitType;
         this.limit = limit;
     }
 
@@ -36,7 +36,7 @@ public class ProblemFourInput extends AbstractProblemInput {
         final String[] inputSplit = getInput().split(ROUTE_OPERATION_DELIMITER);
         super.setNodes(inputSplit[0]);
         final String[] operationSplit = inputSplit[1].split(OPERATION_DELIMITER);
-        this.exactly = LimitType.EXACTLY == LimitType.valueOf(operationSplit[0].toUpperCase());
+        this.limitType = LimitType.valueOf(operationSplit[0].toUpperCase());
         this.limit = Integer.valueOf(operationSplit[1]);
     }
 
