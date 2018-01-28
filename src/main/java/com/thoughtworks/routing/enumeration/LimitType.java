@@ -3,22 +3,16 @@ package com.thoughtworks.routing.enumeration;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-import java.util.stream.Stream;
-
+/**
+ * Limit type enum, representing the max or equality values.
+ */
 @AllArgsConstructor
 @Getter
 public enum LimitType {
 
-    MAXIMUM("maximum"),
-    EXACTLY("exactly");
-
-    private String operation;
-
-    public static LimitType fromOperation(final String operation) {
-        return Stream.of(LimitType.values())
-            .filter(enumeration -> enumeration.getOperation().equals(operation))
-            .findFirst()
-            .orElseThrow(() -> new IllegalArgumentException("Not a valid operation"));
-    }
+    /** The maximum value for this enum. */
+    MAXIMUM,
+    /** The exact value for this enum. */
+    EXACTLY
 
 }

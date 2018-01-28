@@ -36,7 +36,7 @@ public class ProblemFourInput extends AbstractProblemInput {
         final String[] inputSplit = getInput().split(ROUTE_OPERATION_DELIMITER);
         super.setNodes(inputSplit[0]);
         final String[] operationSplit = inputSplit[1].split(OPERATION_DELIMITER);
-        this.exactly = LimitType.EXACTLY == LimitType.fromOperation(operationSplit[0]);
+        this.exactly = LimitType.EXACTLY == LimitType.valueOf(operationSplit[0].toUpperCase());
         this.limit = Integer.valueOf(operationSplit[1]);
     }
 

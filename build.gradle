@@ -31,8 +31,7 @@ jacocoTestCoverageVerification {
         rule {
             element = 'CLASS'
             // Main and lombok builders excluded as not relevant to the problem solving
-            excludes = ['com.thoughtworks.routing.RoutingSolver']
-            excludes += ['**Builder']
+            excludes = ['**Builder']
 
             // Re-included below
             excludes += ['com.thoughtworks.routing.service.util.SolvingUtil']

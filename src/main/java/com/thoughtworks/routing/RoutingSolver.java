@@ -24,7 +24,6 @@ public class RoutingSolver {
         );
         final InputReader inputReader = new InputReader(orchestrator);
         inputReader.start();
-        System.exit(0);
     }
 
 }
